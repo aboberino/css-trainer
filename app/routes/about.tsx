@@ -2,6 +2,8 @@ import type { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { useSupabase } from "~/utils/supabase-client";
 import { getSession } from "~/utils/supabase.server";
+import { NavLink } from "@remix-run/react"
+
 
 const loader: LoaderFunction = async ({ request }) => {
     console.log("coucou")

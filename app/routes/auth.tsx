@@ -11,7 +11,7 @@ export default function AuthBasic() {
   return (
     <Auth.UserContextProvider supabaseClient={supabase}>
       <Container>
-        <Auth supabaseClient={supabase} />
+        <Auth supabaseClient={supabase} style={{ width: 350, height: '100%', margin: '0 auto' }}/>
       </Container>
     </Auth.UserContextProvider>
   );

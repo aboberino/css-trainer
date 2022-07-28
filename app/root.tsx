@@ -63,32 +63,9 @@ export default function App() {
   return (
     <Document>
       <SupabaseProvider supabase={supabase}>
-        <Layout >
           <Navbar />
           <Outlet />
-        </Layout>
       </SupabaseProvider>
     </Document>
   )
-}
-
-function Layout({ children }: React.PropsWithChildren<{}>) {
-  const submit = useSubmit()
-  const supabase = useSupabase()
-
-  const handleSignOut = () => {
-    supabase.auth.signOut().then(() => {
-      submit(null, { method: "post", action: "/" })
-    })
-  }
-  return (
-    <main>
-      <header>
-        {supabase.auth.session()
-        ? (<Button onClick={handleSignOut}>Sign out</Button>)
-        : (<Link to="/auth"><Button>Sign in</Button></Link>)}
-      </header>
-      {children}
-    </main>
-  );
 }
