@@ -28,14 +28,13 @@ export default function Navbar() {
     return (
         <nav>
             <ul>
-
+                {menuItems.map(menuItem => (<li key={menuItem.title}>
+                    <NavLink to={menuItem.path} >
+                        {menuItem.title}
+                    </NavLink>
+                </li>))
+                }
             </ul>
-            {menuItems.map(menuItem => (<li key={menuItem.title}>
-                <NavLink to={menuItem.path} >
-                    {menuItem.title}
-                </NavLink>
-            </li>))
-            }
         </nav>
     )
 }
