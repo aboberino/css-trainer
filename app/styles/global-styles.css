@@ -21,13 +21,11 @@ body {
 
 nav {
     background-color: #111;
-    height: 80px;
-    width: 100%;
+    padding: 16px;
     display: flex;
     gap: 40px;
     font-weight: bold;
     align-items: center;
-    text-transform: uppercase;
 }
 
 .navItems {
@@ -42,8 +40,105 @@ nav {
     border-radius: 6.4px;
     color: #f9f9f9;
     text-decoration: none;
+    text-transform: uppercase;
+
 }
 
 .navItem:hover {
     background-color: rgba(128, 128, 128, .3);
+}
+
+.navbar .logo {
+    filter: invert(1);
+    width: 40px;
+}
+
+.navbar .UserInfos {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+
+.navbar .UserInfos {
+    position: relative;
+    height: 35px;
+}
+
+.navbar .UserInfos:not(:focus-within) .content {
+    opacity: 0;
+    pointer-events: none;
+    top: -5px;
+}
+
+.navbar .UserInfos:focus-within .icon-down {
+    display: none;
+}
+.navbar .UserInfos:not(:focus-within) .icon-up {
+    display: none;
+}
+
+.navbar .UserInfos:focus-within > button {
+    height: 100%;
+    padding: 0 12px 0 25px;
+}
+
+.navbar .UserInfos .content {
+    position: absolute;
+    background-color: #343434;
+    top: -10px;
+    left: -10px;
+    right: 15px;
+    border-radius: 22px;
+    padding: 10px;
+    padding-top: 60px;
+    z-index: 1;
+    transition: all .15s cubic-bezier(0.42, 0, 1, 2.85);
+}
+
+.navbar .UserInfos .content button {
+    color: white;
+    border-radius: 20px;
+    padding: 4px;
+}
+
+.navbar .UserInfos .avatar {
+    height: inherit;
+    aspect-ratio: 1 / 1;
+    border-radius: 999px;
+    background-color: #0078e1;
+    display: grid;
+    place-items: center;
+    z-index: 100;
+}
+
+.navbar .UserInfos > button {
+    all: unset;
+    cursor: pointer;
+    background-color: #2a2a2a;
+    height: fit-content;
+    padding: 5px 12px 5px 25px;
+    transform: translateX(-25px);
+    border-radius: 0 99px 99px 0;
+    z-index: 10;
+    transition: all .15s ease-in-out;
+}
+
+
+.navbar .UserInfos .text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar .UserInfos .text > div {
+    font-size: 13px;
+    min-width: 40px;
+}
+
+.navbar .UserInfos:not(:focus-within) .text > div {
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

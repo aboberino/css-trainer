@@ -1,7 +1,5 @@
-import type {
-  LinksFunction,
-  MetaFunction,
-} from "@remix-run/node";
+import type { LinksFunction, MetaFunction } from '@remix-run/node'
+import Logo from './assets/logo.svg'
 
 import {
   Link,
@@ -12,29 +10,30 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
-  useSubmit
-} from "@remix-run/react";
-import { createClient } from "@supabase/supabase-js";
-import { Button } from "@supabase/ui";
+  useSubmit,
+} from '@remix-run/react'
+import { createClient } from '@supabase/supabase-js'
+import { Button } from '@supabase/ui'
 
-import Navbar from "./components/navbar";
-import globalStylesheetUrl from "./styles/global-styles.css";
-import { SupabaseProvider, useSupabase } from "./utils/supabase-client";
+import Navbar from './components/navbar'
+import globalStylesheetUrl from './styles/global-styles.css'
+import { SupabaseProvider, useSupabase } from './utils/supabase-client'
 
 export const links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: globalStylesheetUrl }];
-};
+  return [{ rel: 'stylesheet', href: globalStylesheetUrl }]
+}
 
 export const meta: MetaFunction = () => ({
-  charset: "utf-8",
-  title: "New Remix App",
-  viewport: "width=device-width,initial-scale=1",
-});
+  charset: 'utf-8',
+  title: 'New Remix App',
+  viewport: 'width=device-width,initial-scale=1',
+})
 
 function Document({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <link rel="icon" type="image/png" href={Logo} />
         <Meta />
         <Links />
       </head>
@@ -45,7 +44,7 @@ function Document({ children }: { children: React.ReactNode }) {
         <LiveReload />
       </body>
     </html>
-  );
+  )
 }
 
 export const loader = () => {
@@ -56,15 +55,14 @@ export const loader = () => {
 }
 
 export default function App() {
-
   const loader = useLoaderData()
   const supabase = createClient(loader.supabaseUrl, loader.supabaseKey)
 
   return (
     <Document>
       <SupabaseProvider supabase={supabase}>
-          <Navbar />
-          <Outlet />
+        <Navbar />
+        <Outlet />
       </SupabaseProvider>
     </Document>
   )
