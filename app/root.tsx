@@ -16,8 +16,9 @@ import { createClient } from '@supabase/supabase-js'
 import { Button } from '@supabase/ui'
 
 import Navbar from './components/navbar'
+import Header from './components/Header'
 import globalStylesheetUrl from './styles/global-styles.css'
-import { SupabaseProvider, useSupabase } from './utils/supabase-client'
+import { SupabaseProvider } from './utils/supabase-client'
 
 export const links: LinksFunction = () => {
   return [{ rel: 'stylesheet', href: globalStylesheetUrl }]
@@ -61,6 +62,7 @@ export default function App() {
   return (
     <Document>
       <SupabaseProvider supabase={supabase}>
+        <Header />
         <Navbar />
         <Outlet />
       </SupabaseProvider>
